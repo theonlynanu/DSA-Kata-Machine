@@ -16,6 +16,7 @@ export function test_list(list: List<number>): void {
 
     list.prepend(5);
     list.prepend(7);
+    console.log(list);
     list.prepend(9);
 
     expect(list.get(2)).toEqual(5);
