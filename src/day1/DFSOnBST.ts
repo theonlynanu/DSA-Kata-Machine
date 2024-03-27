@@ -1,4 +1,4 @@
-function walk(curr: BinaryNode<number> | undefined, needle: number): boolean {
+function walk(curr: BinaryNode<number> | null, needle: number): boolean {
     // Base cases
     if (!curr) {
         return false;
@@ -6,14 +6,11 @@ function walk(curr: BinaryNode<number> | undefined, needle: number): boolean {
 
     if (curr.value === needle) return true;
 
-    if (curr.left) {
-        if (walk(curr.left, needle)) return true;
-    }
-    if (curr.right) {
-        if (walk(curr.right, needle)) return true;
+    if (curr.value < needle) {
+        return walk(curr.right, needle);
     }
 
-    return false;
+    return walk(curr.left, needle);
 }
 
 export default function dfs(head: BinaryNode<number>, needle: number): boolean {
